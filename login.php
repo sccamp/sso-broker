@@ -1,7 +1,7 @@
 <?php
 
-include 'Broker.php';
-include 'NotAttachedException.php';
+include 'src/Broker.php';
+include 'src/NotAttachedException.php';
 
 if (php_sapi_name() == 'cli-server') {
     $ssoBrokers = [

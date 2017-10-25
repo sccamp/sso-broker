@@ -1,8 +1,8 @@
 <?php
 
-include 'Broker.php';
-include 'NotAttachedException.php';
-include 'SsoException.php';
+include 'src/Broker.php';
+include 'src/NotAttachedException.php';
+include 'src/SsoException.php';
 
 if (isset($_GET['sso_error'])) {
     header("Location: error.php?sso_error=" . $_GET['sso_error'], true, 307);
