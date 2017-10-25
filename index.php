@@ -25,16 +25,16 @@ if (php_sapi_name() == 'cli-server') {
 
     $port = $_SERVER['SERVER_PORT'];
     $server = $ssoBrokers[$port]['SSO_SERVER'];
-    $broker = $ssoBrokers[$port]['SSO_BROKER_ID'];
+    $brokerId = $ssoBrokers[$port]['SSO_BROKER_ID'];
     $secret = $ssoBrokers[$port]['SSO_BROKER_SECRET'];
     error_log(__FILE__ . ' | Set vars: ' . $server . ', ' . $broker . ', ' . $secret);
 } else {
     $server = getenv('SSO_SERVER');
-    $broker = getenv('SSO_BROKER_ID');
+    $brokerId = getenv('SSO_BROKER_ID');
     $secret = getenv('SSO_BROKER_SECRET');
 }
 
-$broker = new Broker($server, $broker, $secret);
+$broker = new Broker($server, $brokerId, $secret);
 error_log('Created new Broker');
 $broker->attach(true);
 error_log('Attached sessions');
