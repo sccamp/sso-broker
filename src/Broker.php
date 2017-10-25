@@ -218,6 +218,7 @@ class Broker
         list($contentType) = explode(';', curl_getinfo($ch, CURLINFO_CONTENT_TYPE));
 
         if ($contentType != 'application/json') {
+            error_log($response);
             $message = 'Expected application/json response, got ' . $contentType;
             throw new Exception($message);
         }
