@@ -53,9 +53,6 @@ class Broker
      */
     public function __construct($url, $broker, $secret, $cookie_lifetime = 3600)
     {
-        error_log('url: ' . $url);
-        error_log('broker: ' . $broker);
-        error_log('secret: ' . $secret);
         if (!$url) throw new \InvalidArgumentException("SSO server URL not specified");
         if (!$broker) throw new \InvalidArgumentException("SSO broker id not specified");
         if (!$secret) throw new \InvalidArgumentException("SSO broker secret not specified");

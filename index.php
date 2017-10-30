@@ -11,13 +11,13 @@ if (isset($_GET['sso_error'])) {
 
 if (php_sapi_name() == 'cli-server') {
     $ssoBrokers = [
-        '9001' => [
-            'SSO_SERVER' => 'http://localhost:9000',
+        '8901' => [
+            'SSO_SERVER' => 'http://localhost:8900',
             'SSO_BROKER_ID' => 'Betelgeuse',
             'SSO_BROKER_SECRET' => 'd6cfca165058a7d43f85d5bb5ffcbe45'
         ],
-        '9002' => [
-            'SSO_SERVER' => 'http://localhost:9000',
+        '8902' => [
+            'SSO_SERVER' => 'http://localhost:8900',
             'SSO_BROKER_ID' => 'Vega',
             'SSO_BROKER_SECRET' => '64d8c5e0e73635dc894032f156884f23'
         ]
@@ -27,7 +27,7 @@ if (php_sapi_name() == 'cli-server') {
     $server = $ssoBrokers[$port]['SSO_SERVER'];
     $brokerId = $ssoBrokers[$port]['SSO_BROKER_ID'];
     $secret = $ssoBrokers[$port]['SSO_BROKER_SECRET'];
-    error_log(__FILE__ . ' | Set vars: ' . $server . ', ' . $broker . ', ' . $secret);
+    error_log(__FILE__ . ' | Set vars: ' . $server . ', ' . $brokerId . ', ' . $secret);
 } else {
     $server = getenv('SSO_SERVER');
     $brokerId = getenv('SSO_BROKER_ID');
@@ -65,6 +65,7 @@ if (!$user) {
     <body>
         <div class="container">
             <h1><?= $broker->broker ?> <small>(Single Sign-On demo)</small></h1>
+            <h3 style="color: #666"><em>Running on <?php echo $_SERVER['HTTP_HOST']; ?></em></h3>
             <h3>Logged in</h3>
 
             <pre><?= json_encode($user, JSON_PRETTY_PRINT); ?></pre>
